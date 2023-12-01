@@ -1,4 +1,4 @@
-package com.phase5;
+package com.phase6;
 
 import java.util.Scanner;
 import java.util.HashMap;
