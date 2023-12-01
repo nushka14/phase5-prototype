@@ -1,0 +1,41 @@
+import java.util.Scanner;
+import java.util.Random;
+
+public class UsernamePasswordOTP {
+
+    public static void main(String[] args) {
+        // Define the correct username and password
+        String correctUsername = "user123";
+        String correctPassword = "pass456";
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter your username: ");
+        String username = scanner.nextLine();
+
+        System.out.println("Enter your password: ");
+        String password = scanner.nextLine();
+
+        if (isValidCredentials(username, password, correctUsername, correctPassword)) {
+            System.out.println("Authentication successful.");
+            String otp = generateOTP();
+            System.out.println("Your one-time passcode (OTP) is: " + otp);
+        } else {
+            System.out.println("Authentication failed. Invalid username or password.");
+        }
+
+        scanner.close();
+    }
+
+    // Validate username and password
+    public static boolean isValidCredentials(String username, String password, String correctUsername, String correctPassword) {
+        return username.equals(correctUsername) && password.equals(correctPassword);
+    }
+
+    // Generate a random one-time passcode (OTP)
+    public static String generateOTP() {
+        Random rand = new Random();
+        int otpValue = 1000 + rand.nextInt(9000); // Generates a 4-digit OTP
+        return String.valueOf(otpValue);
+    }
+}
